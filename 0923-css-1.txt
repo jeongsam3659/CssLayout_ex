@@ -1,0 +1,361 @@
+오전 10:16 2021-09-23
+
+준비물
+ vscode
+ browser (크롬)
+ node.js
+  ㄴ scss
+
+
+---------------------------------
+#1
+
+display 의 기본속성은 block ,
+ 너비width와 높이height가 있다.
+ == box
+ 세로영역으로 전개되어있다.
+
+display - inline-block
+ block을 유지하며 가로영역으로 전개된다.
+
+ inline == element이다.
+ - 유동적이고 너비width와 높이height가 없다.
+ - == 직선
+
+
+
+
+
+#1.1
+ flexbox rule 
+  -1. flexbox는 children으로 사용하지않는다.
+   -flexbox를 위치조정(움직임)고 싶으면 'flexbox container'을 만들어야한다.
+  >> 항상 부모위치에 있는 대상으로 적용해야한다.
+  >> flexcontainer에서는 부모가 자식의 위치를 변경한다.
+
+
+
+
+#1.2
+ - row(행) = 가로
+ - column(열) = 세로
+
+ flex container의 flex-direction 기본값은 row.
+해당row에 있는 item의 위치를 변경시키기 위해서는 justify-content를
+사용하는데 수평 축에있는 flexchildren의 위치를 변경한다.
+
+ flex-direction의 기본값이 row일 때 수평축이 곧 main-axis.
+main-axis에서 jsutify-content를 사용하면 대상item을 움직일 수 있는것인데,
+main-axis가 수평축, 가로이기 떄문에 가로로 item이 움직인다.
+
+ flex container가 row을 가질때는 cross-axis는 단어 그대로 가로지르기 때문에 수직(vertical).
+corss-axis에서 item을 움직이기 위해서는 align-content를 사용한다.
+
+align-center를 사용할 때는 반드시 flex container(부모)의 높이가 어느 정도 되는지 반드시 확인하자. 
+이미 item과 높이가 동일하여 위치를 변환시킬 수 없는 경우가 많기 때문이다.
+
+
+
+#1.3
+ -  flex-direction: row; 
+  > main-가로 / cross- 세로
+ -  flex-direction: column; 
+  > main-세로 / cross- 가로
+
+
+
+#1.4
+ - 자식의 item위치를 변경시 align-self와 order를 사용한다.
+ align-self 대상을 개별로 적용
+  >> align-item과 동일하고
+  >> 하나의 element에만 설정해도 적용된다. (cross Axis만)
+
+ order
+ 대상(자식)의 순서를 변경할때 사용
+ html을 바꿀수 없을때 사용된다.
+
+
+
+
+#1.5
+wrap 
+ 기능 flexwrap : no-wrap > 어떠한 경우에도 같은 줄에 있게함. ( width 가 뭉게(변경)되더라도 )
+              : wrap > 기존의 크기(width)를 지켜서 나열
+
+      flex-driection 의 row-reverse > 역순정렬
+
+
+
+
+
+
+
+
+
+
+#2.1
+Gird(격자)
+ - flexbox의 spacebetween으로 할시 격자가 형태가 아니게 될 수 있다.
+ - spacebetween은 대상 사이의 거리를 벌려주는 역할
+ex) 1 2 3
+    4   5
+
+
+#2.2
+ display: grid;
+ - 대부분 부모클래스에 디자인한다.
+ - 컬럼column부터 정의. 
+
+ * gird-template-columns : __; 
+ - ' ___ ' 원하는 만큼의 column갯수를 적으면 된다.
+  ex_ 20px 55px 89px 100px;
+     첫번째 20px 두번째 55px... 등 정해진다.
+
+ * grid-template-rows    
+
+ * column-gap: column 간의 간격차이. 설정
+ * row-gap : row간의 간격차이. 
+  또는
+  칼럼과 로우가 동일할 경우 row : 로 통일.
+
+
+#2.3
+Gird template Areas
+ - grid-template-columns/rows: 200px 200px 200px 200px;
+  >> grid-template-columns/rows: repeat(4, 200px); (횟수 , 크기)로 함축시킬 수 있다.
+ - auto 200px으로 설정할 수 있다. (두번째만 200px 적용이고 나머지 그리드 들은 auto)
+
+* gird-template-areas : 
+ ex_   grid-template-areas: 
+  "header header header header"
+  "content content content nav"
+  "content content content nav"
+  "footer footer footer footer"
+  ;
+  로 지정해주고 각 클래스/id 값에 값을 넣어야한다.
+
+* grid-area: header; grid-area: content;
+ 클래스명과 상관없다.
+ 빈공간으로 작성시 ' . '
+
+
+#2.4
+Rows and Columns
+ 시작과 끝을 정할 수 있다.
+ * gird-column-start: 1; __ 에는 숫자를 기입. 숫자는 라인line을 의미한다.
+ * gird-column-end: 2;
+ - column이니까 세로줄. end에 3, 4, 5를 넣어보면 그차이를 알 수 있다.
+
+
+#2.5
+ shortcuts
+ grid-start/end를 짧게 줄일 수 있다.
+ ● grid-column: (start) / (end);
+ ● grid-row: (start) / (end);
+  ex_ grid-column 1 / 5; 
+ 
+  - 1 / -1; 에서
+   -1의 의미는 끝을 이야기한다. 
+   끝에서 부터 -1, -2 ,-3 ... 세어간다.
+
+  - span 숫자
+   1 / -1 대신하여 span을 작성하여 시작과 끝으로 
+   Cell(grid로 나눈)갯수로 설정할 수 있다.
+
+   ex_ 4칸 지정하였을때 시작과 끝 span 4
+   하지만 시작지점을 잘 정해주어야한다.
+
+   ex_ 2 / span 2;
+    line 2에서 시작해서 2cell
+
+
+#2.6
+ line Naming
+ ex_
+  grid-template-columns: [first-line] 100px [second-line] 100px [thrid-line] 100px [fourth-line] 100px [fifth-line];
+ 그리고 적용시
+ grid-column: first-line / fourth-line; 
+
+ - column / row 둘다 가능하다.
+ - repeat 안에 이름을 넣고 싶으면
+ ex_ 
+  repeat(4, 100px [sexy-line]);
+  이렇게하면 해당 라인의 이름을 sexy-line으로 설정하여 사용할 수 있다.
+  하지만 100px [sexy-line] 100px [sexy-line] ....
+  이 순서대로 가능거라 설정시 고려해야한다.
+
+
+---------
+flex는 1차원 (column)
+gird는 2차원 (column/ row)
+
+
+
+#2.7
+ Grid template 
+
+ fr - fraction(부분)
+    - pixel이나 % 같은 측정단위
+    - fraction은 사용 가능한 공간을 뜻한다.
+    - grid에서 사용 가능한 공간을 뜻한다. (grid container)
+    - fr값은 비율로 공간을 나눈다.
+    - *우리가 사용할 수 있는 공간을 차지하고(N번 나누는 것.)
+
+    - 하지만 높이에서 1fr은 0이다. 높이를 설정해줘야한다. grid는 높이가 없다.
+
+    px로 할경우 컴퓨터에서는 작지만 휴대폰에선 큰 단위이다.
+    고로 비율로 나타낼 수 있는 fr이나 %를 사용한다.
+
+    vh - 비율 50vh(내 화면의 절반)
+
+  Grid template
+    - grid-area 지정 / grid-template 지정 + 높이를 지정
+    ex_
+     "header header" 1fr 
+     "footer footer" 1fr / 각 column마다 width(폭)이 얼마나 되는지 적기. 
+
+     * "row갯수" row의 높이 / 각 column width폭
+
+
+#2.8
+grid container는 모든 grid자식을 갖고 자식들을 늘여서 본인을 채워 놓는다.
+
+● justify-items
+● align-items
+● place-items: (수직) (수평);
+
+▷ stretch : grid를 늘려서 grid를 채우게 한다.
+▷ start : item을 cell 시작에 배치한다.
+▷ center : item을 cell 중앙에 배치한다.
+▷ end : item을 cell 끝에 배치한다.
+
+
+
+#2.9
+ grid -content를 정렬align하는방법 
+   Start, end, space-evenly, space-around, space-between
+
+ 열(rows) = align-content
+   수직적으로 그리드를 움직이는 것
+ 행(line) = justify-content
+
+ place-content - 수직/수평적으로 움직인다. (전체를 적용)
+  - place-items과는 다르다. 각 사각형 하나하나에 어떤걸 적용하는것.
+
+
+#2.10
+ 개별적용
+ align-self / justify-self / place-self: end center;
+
+
+VScode에서 항목 여러 개 생성하기 :
+.item*20>{$}
+$ 20개 생성($는 20까지의 정수를 순차적으로)
+ **
+  https://docs.emmet.io/abbreviations/syntax/
+
+odd 홀 / even 짝
+
+> 해당grid구역에 넣을 데이터가 많을경우 초과된 영역은 제대로 표현되지 않는데.
+>> grid-auto-rows / grid-auto-column
+ grid-auto-rows
+ - 만약에 ~ 여기에 더 많은 content가 있으면, 
+ 자동적으로 row/column를 생성한다. 
+
+ grid-auto-flow : row/column [default: row]
+  - flex-direction과 비슷하다.
+  row가 끝날 때 새로운 row를 만들지, 새로운 column을 만들지 결정한다.
+
+ grid-auto-column
+ grid-auto-flow: column;일때 작동한다.
+
+
+#2.11
+  minmax
+   - 얼마나 작게 / 얼마나 크게 element가 되는지.
+   - 창 크기에대해 제한을 두는 기능
+   ex_
+   grid-template-columns: repeat(10, minmax(100px, 1fr));
+   > 최소 100px / 최대 1fr
+
+
+#2.12
+ auto-fit / auto-fill
+ - repeat() 만 사용한다.
+ 
+ auto-fill 
+ - 정해진 구역내 column을 만들어주는 일을 한다. 
+ - 빈 공간도 만들어낸다.
+ - 변화에도 같은 사이즈
+ //창 너비가 늘어나면 빈 column들로 row를 채움
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+
+ auto-fit
+  - fit(맞추다)
+  - 현재의 element를 늘려서 row에 맞게 해준다.
+  - 변화에 맞게 변화하는 사이즈
+  // 창 너비가 늘어나면 element를 늘려서 row에 맞게 해줌
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+
+
+#2.13
+ min / max content
+  > fr처럼'사이즈' 개념
+● max-content
+▷ content의 크기만큼 cell의 크기를 늘린다.
+● min-content
+▷ content의 크기를 최대한 줄여 cell의 크기를 줄인다.
+
+※ 어떻게 content가 보여야 하는지 디자인하는 것이다.
+※ repeat(), minmax와 결합하여 반응형 디자인을 만들 수 있다.
+
+ex_
+grid-template-columns: repeat(5, minmax(maxcontent, 1fr));
+
+
+
+#3.0
+
+//출처:
+https://webclub.tistory.com/467
+
+node -v   node버젼 체크
+npm -v    npm버젼 체크
+
+npm install --global gulp-cli  설치
+
+npm init  설정
+
+npm install --save-dev gulp
+
+package.json >> gulp: 4.0.2확인 끝.
+
+
+** VSCode 오류 : 이 시스템에서 스크립트를 실행할 수 없으므로...
+ > 출처 :
+ https://hellcoding.tistory.com/entry/VSCode-%EC%98%A4%EB%A5%98-%EC%9D%B4-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%97%90%EC%84%9C-%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC-%EC%8B%A4%ED%96%89%ED%95%A0-%EC%88%98-%EC%97%86%EC%9C%BC%EB%AF%80%EB%A1%9C
+
+ VSCode의 터미널을 통하여 npm 혹은 yarn을 사용하여 에러 발생시 해결법 (1)
+ ~~ about_Execution_Policies(https://go.microsoft.com/fwlink/?LinkID=135170)를 참조하십시오
+
+ 윈도우 10 기준.
+  1. Windows Powershell 앱을 검색 >> 관리자 권한 실행.
+  2. 권한 상태 확인 >> get-ExecutionPolicy
+    Restricted
+     - default설정값으로, 스크립트 파일을 실행할 수 없음.
+    AllSigned
+     - 신뢰할 수 있는 (서명된) 스크립트 파일만 실행할 수 있음.
+    RemoteSigned
+     - 로컬에서 본인이 생성한 스크립트와, 신뢰할 수 있는(서명된) 스크립트 파일 실행할 수 있음.
+    Unrestricted
+     - 모든 스크립트 실행가능
+    ByPass
+     - 경고/차단 없이 모든 것을 실행가능하도록 함.
+    Undefined
+     - 권한을 설정하지 않겠음.
+
+  3. Set-ExecutionPolicy RemoteSigned
+    y
+  4. get-ExecutionPolicy 으로 버젼 확인.
+
+

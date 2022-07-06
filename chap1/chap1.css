@@ -1,0 +1,19 @@
+/*
+    #1.1,2,3 flexbox
+*/
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    /* Main Axis */
+    justify-content: space-around;
+    /* Cross Axis */
+    align-items: flex-start;
+    height: 100vh;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    color: white;
+}

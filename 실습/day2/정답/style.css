@@ -1,0 +1,131 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+body {
+  background-color:#F6F6F6;
+  padding:50px 25px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  max-width: 770px;
+  width: 100%;
+  margin:0 auto;
+}
+
+header {
+  display:flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom:10px;
+  border-bottom: 2px solid black;
+  margin-bottom:20px;
+}
+
+h1 {
+  font-size:86px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size:40px;
+  font-weight: 600;
+}
+
+#info{
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+#info > div{
+  display: flex;
+}
+
+#info ul:first-child {
+  margin-right:80px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+#circles{
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.circle_type{
+  width:220px;
+  height:220px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.type_A{background: skyblue;}
+.type_B{background: #616365}
+.type_C{background: #03A464;}
+/*
+#circles div:nth-child(1),
+#circles div:nth-child(2),
+#circles div:nth-child(3) {
+  background-color:#BBE1F0;
+}
+
+#circles div:nth-child(4),
+#circles div:nth-child(5),
+#circles div:nth-child(6) {
+  background-color:#616365;
+}
+
+#circles div:nth-child(7),
+#circles div:nth-child(8),
+#circles div:nth-child(9) {
+  background-color:#04A565;
+}
+*/
+
+
+
+
+
+/*
+Flex를 사용해서 레이아웃 만들기
+
+- header태그 안에 h1과 h4에 flex속성을 사용하기 위해 
+    header에게 display: flex를 준 후, 
+    justify-content: space-between 를 사용해서 
+     h1과 h4 요소들 사이에 공간을 두고 수평 정렬합니다.
+
+- header태그에 align-items: flex-end 를 사용해서 
+    h1과 h4 요소들을 header태그 공간 안에서 가장 아래에 수직 정렬합니다.
+------------------------------------------------------------------------------------------------
+
+- section#info태그 안에 div와 span에 flex속성을 사용하기 위해 
+    section#info에게 display: flex를 준 후, 
+    justify-content: space-between을 사용해서 div와 span 요소들 사이에 공간을 두고 수평 정렬합니다.
+
+- section#info > div아래 ul을 수평 정렬하기 위해 
+  display: flex를 줬습니다.
+-------------------------------------------------------------------------------------------------
+
+- 9개의 div을 묶고 있는 section#circles 에게 
+    display: flex 
+    justify-content: space-between
+    를 줘서 요소들을 수평 정렬합니다.
+
+- body태그는 
+    max-width: 770px 최대 770px의 너비를 가집니다. 
+    #circles div태그들은 width: 220px을 가집니다. 
+    그렇기 때문에 한 줄에 최대 3개까지 밖에 배치할 수가 없는데 
+      flex를 쓰게 되면 기본적으로 자식 태그들의 너비를 줄여서라도 부모 태그의 공간에 배치하려고 합니다.
+
+- 그래서 부모 태그에 공간이 부족할 때 
+    자식 태그들을 다음 줄로 넘겨서 배치되게 하기 위해 
+    flex-wrap: wrap을 사용한 것입니다
+-------------------------------------------------------------------------------------------------
+
+flex, justify-content, align-items를 사용해서 요소들을 수평, 수직 정렬할 수 있습니다.
+flex-wrap을 사용하면 부모 태그에 공간이 없을 때 자식 요소들의 크기를 유지한 채 
+다음 줄로 넘어가서 배치하게 할 수 있습니다.
+*/

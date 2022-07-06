@@ -1,0 +1,19 @@
+@import "_variables";
+
+body{
+  background: #fff;
+}
+
+.box{
+  h2{
+    color: $blue;
+  }
+  button{
+    color: $red;
+  }
+  &:hover{
+    background-color: gray;
+  }
+}
+
+

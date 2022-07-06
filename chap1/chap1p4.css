@@ -1,0 +1,25 @@
+/*
+    #1.1,2,3 flexbox
+*/
+
+.father{
+   display: flex;
+   justify-content: space-around;
+    height: 100vh;
+}
+.children{
+    width: 100px;
+    height: 100px;
+    background: tomato;
+    color: white;
+    font-size: 50px;
+}
+
+.children:nth-child(2){
+    order: 1;
+    align-self: center;
+}
+
+.children:nth-child(3){
+    align-self: flex-end;
+}

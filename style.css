@@ -1,0 +1,25 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+
+.grid{
+  display: grid;
+  gap: 5px;
+ 
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+
+  grid-auto-rows: 100px;
+
+  color: white;
+  font-size: 48px;
+
+  justify-content: center;
+}
+
+.item:nth-child(odd){
+  background-color: #8e44ad;
+}
+
+.item:nth-child(even){
+  background-color: #f39c12;
+}
+

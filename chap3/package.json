@@ -1,0 +1,14 @@
+{
+  "name": "chap3",
+  "version": "1.0.0",
+  "description": "(S)CSS Layout Masterclass: Flexbox & Grid",
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
